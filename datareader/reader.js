@@ -9,6 +9,7 @@ function emit(timeout, temperatureEncoding, cb) {
                 climate.readHumidity(function (errHumid, humid) {
                     cb({
                         module: 'climate',
+                        device: tessel.deviceId(),
                         temperature: {
                             value: temp,
                             error: errTemp
