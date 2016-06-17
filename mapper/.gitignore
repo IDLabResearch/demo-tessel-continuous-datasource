@@ -1,6 +1,6 @@
 RML-Mapper.jar
 .idea
-*.json
+climate.json
 log
 node_modules
 *.log
