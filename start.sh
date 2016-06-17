@@ -5,5 +5,5 @@
 datasourceinserter/startserver.sh &
 
 # Read, map insert
-datareader/read.sh | mapper/map.sh | datasourceinserter/
+datareader/read.sh | mapper/map.sh | datasourceinserter/insert-piped.sh
 
