@@ -26,7 +26,12 @@ request.post({
   body:    body
 }, function(error, response, body){
   if (error) {
+      console.log(error);
       process.exit(1);
+  } else {
+      process.stdout.clearLine();
+      process.stdout.cursorTo(0);
+      process.stdout.write("Valid until: " + new Date(final).toISOString());
   }
 });
 

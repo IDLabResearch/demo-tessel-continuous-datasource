@@ -1,7 +1,8 @@
 #!/bin/bash
 cd $(dirname "$0")
 
-export QUERY="$(cat rfid.sparql)"
+. ../.properties
+export QUERY="$(cat $modules.sparql)"
 export TARGET="http://localhost:3000/citybench"
 export CACHING="true"
 export INTERVAL="false"
