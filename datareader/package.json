@@ -1,0 +1,15 @@
+{
+  "name": "thermometer-continuous-datasource-tessel-reader",
+  "version": "1.0.0",
+  "description": "",
+  "main": "reader.js",
+  "dependencies": {
+    "climate-si7020": "^0.1.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "MIT"
+}
