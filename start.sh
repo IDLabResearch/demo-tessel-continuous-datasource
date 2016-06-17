@@ -2,11 +2,8 @@
 # Starts the complete pipeline
 
 # Start live LDF server
-datasourceinserter/startserver.sh
+datasourceinserter/startserver.sh &
 
-# Start data reader
-datareader/read.sh
+# Read, map insert
+datareader/read.sh | mapper/map.sh | datasourceinserter/
 
-# TODO: pipe to mapper
-
-# TODO: datasourceinserter/
