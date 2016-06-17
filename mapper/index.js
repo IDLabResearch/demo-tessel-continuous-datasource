@@ -32,16 +32,21 @@ function generateRDF(module, data) {
   var dir = __dirname; //'/home/pieter/Developer/demo-thermometer-continuous-datasource/mapper/';
   var outputFile = dir + '/triples.ttl';
   var format = 'turtle';
-  var mappingFile = dir + '/tessel.rml.ttl';
+  var originalMappingFile = dir + '/tessel.rml.ttl';
+  var mappingFile = dir + '/custom-tessel.rml.ttl';
   var logFile = dir + '/tessel.rml.log';
   var rmwd = dir;
 
-  //exec('cd ' + rmwd + '; java -jar RML-Mapper.jar -m ' + mappingFile + ' -f ' + format + ' -o ' + outputFile + ' > ' + logFile, function (error, stdout, stderr) {
-  exec('cd ' + rmwd + '; java -jar RML-Mapper.jar -m ' + mappingFile + ' -f ' + format + ' -o ' + outputFile + ' > ' + logFile + '; sed -i \'/^s*$/d\' ' + outputFile, function (error, stdout, stderr) {
-    //var readStream = fs.createReadStream(outputFile);
+  console.log('sed -e \'s/\\*\\*\\*INPUT\\*\\*\\*/' + dir.replace(/\//g, '\\/') + '\\/climate\\.json/g\' ' + originalMappingFile );
 
-    //readStream.pipe(process.stdout);
-    console.log('done');
+  exec('cd ' + dir +'; rm -f ' + mappingFile + '; sed -e \'s/\\*\\*\\*INPUT\\*\\*\\*/' + dir.replace(/\//g, '\\/') + '\\/climate\\.json/g\' ' + originalMappingFile + ' > ' + mappingFile, function(error, stdout, stderr) {
+
+    exec('cd ' + rmwd + '; java -jar RML-Mapper.jar -m ' + mappingFile + ' -f ' + format + ' -o ' + outputFile + ' > ' + logFile + '; sed -i \'/^s*$/d\' ' + outputFile, function (error, stdout, stderr) {
+      //var readStream = fs.createReadStream(outputFile);
+
+      //readStream.pipe(process.stdout);
+      console.log('done');
+    });
   });
 }
 

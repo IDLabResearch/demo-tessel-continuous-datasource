@@ -12,7 +12,7 @@ map:ClimateMapping
   ex:useWithTesselModule "climate";
 
   rml:logicalSource [
-    rml:source "/home/pieter/Developer/tessel-local/climate.json";
+    rml:source "***INPUT***";
     rml:referenceFormulation ql:JSONPath;
     rml:iterator "$" ];
 

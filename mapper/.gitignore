@@ -6,3 +6,4 @@ node_modules
 *.log
 triples.ttl
 repositories
+custom-tessel.rml.ttl
