@@ -1,0 +1,9 @@
+PREFIX dat: <http://vocab.datex.org/terms#>
+PREFIX saref: <https://w3id.org/saref#>
+PREFIX dbp: <http://dbpedia.org/ontology/>
+PREFIX ex: <http://www.example.com/>
+
+SELECT ?uid WHERE {
+    ?sensor a saref:Sensor;
+        ex:accessedBy ?uid .
+}

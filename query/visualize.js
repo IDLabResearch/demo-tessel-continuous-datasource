@@ -5,11 +5,15 @@ var rl = readline.createInterface({
   terminal: false
 });
 
-var elements = ["?temperature", "?humidity"];
-var names = ["Temperature", "Humidity"];
-
 rl.on('line', function(line){
     data = JSON.parse(line);
+
+    var elements = Object.keys(data);
+    var names = elements.map(function(e){
+      e = e.substr(1);
+      return e.charAt(0).toUpperCase() + e.slice(1);
+    });
+
     process.stdout.clearLine();
     process.stdout.cursorTo(0);
     for (var i = 0; i < elements.length; i++) {
