@@ -4,7 +4,10 @@
   "description": "",
   "main": "reader.js",
   "dependencies": {
-    "climate-si7020": "^0.1.1"
+    "ambient-attx4": "^0.2.8",
+    "climate-si7020": "^0.1.1",
+    "properties-reader": "0.0.15",
+    "rfid-pn532": "^0.1.9"
   },
   "devDependencies": {},
   "scripts": {

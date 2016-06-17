@@ -47,3 +47,19 @@ map:AmbientMapping
     rr:predicateObjectMap [
       rr:predicate ex:sound;
       rr:objectMap [ rml:reference "sound.value" ] ] .
+
+map:RFIDMapping
+  ex:useWithTesselModule "rfid";
+
+  rml:logicalSource [
+    rml:source "***INPUT***";
+    rml:referenceFormulation ql:JSONPath;
+    rml:iterator "$" ];
+
+  rr:subjectMap [
+    rr:template "http://www.example.com/{device}";
+    rr:class saref:Sensor ];
+
+  rr:predicateObjectMap [
+    rr:predicate ex:accessedBy;
+    rr:objectMap [ rml:reference "uid" ] ] .

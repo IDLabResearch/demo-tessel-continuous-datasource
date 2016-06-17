@@ -7,3 +7,5 @@ node_modules
 triples.ttl
 repositories
 custom-tessel.rml.ttl
+rfid.json
+ambient.json

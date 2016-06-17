@@ -16,6 +16,9 @@ function processLine (line) {
       case 'climate':
         file += 'climate.json';
         break;
+      case 'rfid':
+        file += 'rfid.json';
+        break;
     }
 
     fs.writeFile(file, line, function (err) {
@@ -37,9 +40,9 @@ function generateRDF(module, data) {
   var logFile = dir + '/tessel.rml.log';
   var rmwd = dir;
 
-  console.log('sed -e \'s/\\*\\*\\*INPUT\\*\\*\\*/' + dir.replace(/\//g, '\\/') + '\\/climate\\.json/g\' ' + originalMappingFile );
+  //console.log('sed -e \'s/\\*\\*\\*INPUT\\*\\*\\*/' + dir.replace(/\//g, '\\/') + '\\/' + module + '\\.json/g\' ' + originalMappingFile );
 
-  exec('cd ' + dir +'; rm -f ' + mappingFile + '; sed -e \'s/\\*\\*\\*INPUT\\*\\*\\*/' + dir.replace(/\//g, '\\/') + '\\/climate\\.json/g\' ' + originalMappingFile + ' > ' + mappingFile, function(error, stdout, stderr) {
+  exec('cd ' + dir +'; rm -f ' + mappingFile + '; sed -e \'s/\\*\\*\\*INPUT\\*\\*\\*/' + dir.replace(/\//g, '\\/') + '\\/' + module + '\\.json/g\' ' + originalMappingFile + ' > ' + mappingFile, function(error, stdout, stderr) {
 
     exec('cd ' + rmwd + '; java -jar RML-Mapper.jar -m ' + mappingFile + ' -f ' + format + ' -o ' + outputFile + ' > ' + logFile + '; sed -i \'/^s*$/d\' ' + outputFile, function (error, stdout, stderr) {
       //var readStream = fs.createReadStream(outputFile);
