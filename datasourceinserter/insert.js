@@ -1,8 +1,9 @@
 // Takes an interval size (miliseconds),a LDF-server-insertion target url as input parameters
 // and the location to a turtle file as input parameters and inserts that time-annotated data into the LDF server.
 // Data will be inserted as static data when the interval size is 0.
-var request = require('request'),
-    fs      = require('fs');
+var request  = require('request'),
+    fs       = require('fs'),
+    readline = require('readline');
 
 var now = new Date();
 var intervalSize = parseInt(process.argv[2]);
@@ -17,7 +18,7 @@ if (intervalSize <= 0) {
     streamId="STATIC";
 }
 
-var target = process.argv[3] + "/?initial=" + initial + "&final=" + final + "&streamId=" + streamId;
+var target = process.argv[3] + "/?initial=" + initial + "&final=" + final + "&streamId=" + streamId + "&output=" + (initial >= 0 ? "true" : "false");
 var body = fs.readFileSync(process.argv[4], 'utf8');
 
 request.post({
@@ -29,9 +30,10 @@ request.post({
       console.log(error);
       process.exit(1);
   } else {
-      process.stdout.clearLine();
-      process.stdout.cursorTo(0);
-      process.stdout.write("Valid until: " + new Date(final).toISOString());
+      //readline.clearLine(process.stdout);
+      //readline.cursorTo(process.stdout, 0);
+      //process.stdout.write("Valid until: " + new Date(final).toISOString());
+      console.log(body);
   }
 });
 

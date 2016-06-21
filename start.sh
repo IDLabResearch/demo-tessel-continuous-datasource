@@ -8,10 +8,8 @@ fi
 
 # Start live LDF server
 datasourceinserter/startserver.sh &
-
-# Insert RML statements
-
+sleep 1
 
 # Read, map insert
-datareader/read.sh | mapper/map.sh | datasourceinserter/insert-piped.sh
+datareader/read.sh | mapper/map.sh | datasourceinserter/insert-piped.sh > /dev/null
 
