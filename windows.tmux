@@ -12,7 +12,7 @@ send-keys -t 0 "clear && export PS1='LDF Server 🔷  '" enter
 send-keys -t 0 './start.sh' enter
 # Query output
 send-keys -t 1 "clear && export PS1='Query 🔷  '" enter
-send-keys -t 1 'sleep 10 && cd query && ./startquery.sh' enter
+send-keys -t 1 'sleep 13 && cd query && ./startquery.sh' enter
 # Mapper logs
 send-keys -t 2 "clear && export PS1='Mapper 🔷  '" enter
 send-keys -t 2 'tail -f logs/map.txt' enter
